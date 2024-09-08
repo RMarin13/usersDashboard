@@ -1,6 +1,6 @@
 <section class="container mt-3">
   <div class="card shadow p-5">
-    <h3>New User Information</h3>
+    <h3>{{function}} User</h3>
     <hr />
     <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
       <div class="my-3">
@@ -30,7 +30,7 @@
           type="text"
           id="email"
           formControlName="email"
-          placeholder="User Email"
+          placeholder="User's Email"
         />
       </div>
       <div class="my-3">
@@ -40,14 +40,13 @@
           type="text"
           id="image"
           formControlName="image"
-          placeholder="URL to User "
+          placeholder="Full URL to User's Image "
         />
       </div>
       <div class="my-3">
-        <input type="submit" value="Create User" class="btn btn-dark" />
+        <input type="submit" [value]="function" class="btn btn-dark"  />
       </div>
     </form>
   </div>
 </section>
-
-<!-- first_name last_name email image -->
+<!-- [routerLink]="['']"  import?-->

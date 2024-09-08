@@ -28,4 +28,9 @@ export class UsersService {
     return firstValueFrom(this.http.post<IUser>(this.baseUrl, body));
   }
 
+  update(body: IUser): Promise<IUser> {
+    let id = body._id; //sin estas líneas no me funcionó
+    delete body._id; //también fue necesario eliminar el ._id
+    return firstValueFrom(this.http.put<IUser>(`${this.baseUrl}/${id}`, body));
+  }
 }
