@@ -1,1 +1,10 @@
-<p>list works!</p>
+<section class="mt-4">
+  <div class="my-2 row">
+    @for(user of arrUsers; track user._id){
+    <article class="col-12 col-md-4 col-lg-3">
+      <app-card></app-card>
+    </article>
+
+    }
+  </div>
+</section>
