@@ -1,1 +1,53 @@
-<p>form works!</p>
+<section class="container mt-3">
+  <div class="card shadow p-5">
+    <h3>New User Information</h3>
+    <hr />
+    <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+      <div class="my-3">
+        <label class="form-label" for="first_name">First Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="first_name"
+          formControlName="first_name"
+          placeholder="User's First Name"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label" for="last_name">Last Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="last_name"
+          formControlName="last_name"
+          placeholder="User's Last Name"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label" for="email">Email</label>
+        <input
+          class="form-control"
+          type="text"
+          id="email"
+          formControlName="email"
+          placeholder="User Email"
+        />
+      </div>
+      <div class="my-3">
+        <label class="form-label" for="image">Image URL</label>
+        <input
+          class="form-control"
+          type="text"
+          id="image"
+          formControlName="image"
+          placeholder="URL to User "
+        />
+      </div>
+      <div class="my-3">
+        <input type="submit" value="Create User" class="btn btn-dark" />
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- first_name last_name email image -->

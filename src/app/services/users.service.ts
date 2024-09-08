@@ -24,5 +24,8 @@ export class UsersService {
     return firstValueFrom(this.http.delete<IUser>(`${this.baseUrl}/${id}`));
   }
 
+  insert(body: IUser): Promise<IUser> {
+    return firstValueFrom(this.http.post<IUser>(this.baseUrl, body));
+  }
 
 }
