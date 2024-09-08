@@ -1,8 +1,8 @@
-<section class="mt-4">
+<section class="mt-4 justify-content-center">
   <div class="my-2 row">
     @for(user of arrUsers; track user._id){
     <article class="col-12 col-md-4 col-lg-3">
-      <app-card></app-card>
+      <app-card [myUser]="user"></app-card>
     </article>
 
     }

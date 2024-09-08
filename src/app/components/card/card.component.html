@@ -1,0 +1,36 @@
+<div class="card align-items-center mt-2" style="width: 18rem">
+  <img
+    class="rounded-circle w-50 mt-3"
+    alt="avatar1"
+    src="{{ myUser?.image }}"
+  />
+  <div class="card-body">
+    <h5 class="text-center card-title">{{ myUser?.first_name }}</h5>
+    <h5 class="text-center card-title">{{ myUser?.last_name }}</h5>
+  </div>
+
+  <div
+    class="btn-group justify-content-between"
+    role="group"
+    aria-label="Basic example"
+  >
+    <div class="">
+      <button class="btn" [routerLink]="['/home', 'user', myUser?._id]">
+        <i class="fa-regular fa-eye"></i>
+      </button>
+      <!-- <p class="align-content-lg-center">Details</p> -->
+    </div>
+    <div>
+      <button class="btn" [routerLink]="['/home','update-user', myUser?._id]">
+        <i class="fa-regular fa-pen-to-square"></i>
+      </button>
+      <!-- <p>Update</p> -->
+    </div>
+    <div>
+      <button class="btn" [routerLink]="['']">
+        <i class="fa-regular fa-trash-can"></i>
+      </button>
+      <!-- <p>Delete</p> -->
+    </div>
+  </div>
+</div>
