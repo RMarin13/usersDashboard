@@ -1,8 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/iuser.interface';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -22,10 +27,26 @@ export class FormComponent {
   constructor() {
     this.userForm = new FormGroup(
       {
-        first_name: new FormControl(null, []),
-        last_name: new FormControl(null, []),
-        email: new FormControl(null, []),
-        image: new FormControl(null, []),
+        first_name: new FormControl(null, [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern(/^[^\d]+$/),
+        ]),
+        last_name: new FormControl(null, [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern(/^[^\d]+$/),
+        ]),
+        email: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/.*?@?[^@]*\.+.*/),
+        ]),
+        image: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(
+            /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+          ),
+        ]),
       },
       []
     );
@@ -39,15 +60,38 @@ export class FormComponent {
         this.userForm = new FormGroup(
           {
             _id: new FormControl(user._id, []),
-            first_name: new FormControl(user.first_name, []),
-            last_name: new FormControl(user.last_name, []),
-            email: new FormControl(user.email, []),
-            image: new FormControl(user.image, []),
+            first_name: new FormControl(user.first_name, [
+              Validators.required,
+              Validators.minLength(2),
+              Validators.pattern(/^[^\d]+$/),
+            ]),
+            last_name: new FormControl(user.last_name, [
+              Validators.required,
+              Validators.minLength(2),
+              Validators.pattern(/^[^\d]+$/),
+            ]),
+            email: new FormControl(user.email, [
+              Validators.required,
+              Validators.pattern(/.*?@?[^@]*\.+.*/),
+            ]),
+            image: new FormControl(user.image, [
+              Validators.required,
+              Validators.pattern(
+                /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+              ),
+            ]),
           },
           []
         );
       }
     });
+  }
+
+  checkControl(formControlName: string, validator: string) {
+    return (
+      this.userForm.get(formControlName)?.hasError(validator) &&
+      this.userForm.get(formControlName)?.touched
+    );
   }
 
   async getDataForm() {

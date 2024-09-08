@@ -1,8 +1,8 @@
 <section class="container mt-3">
   <div class="card shadow p-5">
-    <h3>{{function}} User</h3>
+    <h3>{{ function }} User</h3>
     <hr />
-    <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+    <form [formGroup]="userForm" (ngSubmit)="getDataForm()" novalidate>
       <div class="my-3">
         <label class="form-label" for="first_name">First Name</label>
         <input
@@ -12,7 +12,16 @@
           formControlName="first_name"
           placeholder="User's First Name"
         />
+
+        @if(checkControl('first_name', 'required')) {
+        <p class="error">Field is mandatory</p>
+        } @if(checkControl('first_name', 'minlength')) {
+        <p class="error">Minimum length at least 2 characters</p>
+        }@if(checkControl('first_name', 'pattern')) {
+            <p class="error">This field cannot contain numbers</p>
+            }
       </div>
+
       <div class="my-3">
         <label class="form-label" for="last_name">Last Name</label>
         <input
@@ -22,7 +31,15 @@
           formControlName="last_name"
           placeholder="User's Last Name"
         />
+        @if(checkControl('last_name', 'required')) {
+        <p class="error">Field is mandatory</p>
+        } @if(checkControl('last_name', 'minlength')) {
+        <p class="error">Minimum length at least 2 characters</p>
+        }@if(checkControl('last_name', 'pattern')) {
+            <p class="error">This field cannot contain numbers</p>
+            }
       </div>
+
       <div class="my-3">
         <label class="form-label" for="email">Email</label>
         <input
@@ -32,7 +49,13 @@
           formControlName="email"
           placeholder="User's Email"
         />
+        @if(checkControl('email', 'required')) {
+        <p class="error">Field is mandatory</p>
+        }@if(checkControl('email', 'pattern')) {
+            <p class="error">Email is not valid</p>
+            }
       </div>
+
       <div class="my-3">
         <label class="form-label" for="image">Image URL</label>
         <input
@@ -40,13 +63,23 @@
           type="text"
           id="image"
           formControlName="image"
-          placeholder="Full URL to User's Image "
+          placeholder="URL to User's Image "
         />
+        @if(checkControl('image', 'required')) {
+        <p class="error">Field is mandatory</p>
+        }@if(checkControl('image', 'pattern')) {
+            <p class="error">URL is not valid</p>
+            }
       </div>
+
       <div class="my-3">
-        <input type="submit" [value]="function" class="btn btn-dark"  />
+        <input
+          type="submit"
+          [value]="function"
+          class="btn btn-dark"
+          [disabled]="!userForm.valid"
+        />
       </div>
     </form>
   </div>
 </section>
-<!-- [routerLink]="['']"  import?-->
