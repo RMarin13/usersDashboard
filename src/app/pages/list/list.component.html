@@ -1,4 +1,8 @@
 <section class="mt-4 justify-content-center container">
+  <div class="container btn-group w-100 justify-content-center gap-2 px-5 mt-2">
+    <button class="btn btn-dark" (click)="goToPage(1)">Page 1</button>    
+    <button class="btn btn-dark" (click)="goToPage(2)">Page 2</button>    
+  </div>
   <div class="my-2 row">
     @for(user of arrUsers; track user._id){
     <article class="col-12 col-md-4 col-lg-3">
@@ -7,9 +11,5 @@
 
     }
   </div>
-
-  <div class="container m-2">
-    <button class="btn" (click)="goToPage(1)">1</button>    
-    <button class="btn" (click)="goToPage(2)">2</button>    
-  </div>
+  
 </section>

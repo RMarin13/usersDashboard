@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+<nav class="navbar navbar-expand-lg bg-body-dark px-4 mt-2 mx-4">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/users']">LOGO</a>
+    <a class="navbar-brand" [routerLink]="['/users']"> <strong> <i class="fa-solid fa-users"></i> USER DASHBOARD  </strong></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -20,7 +20,7 @@
             routerLinkActive="active"
             aria-current="page"
             [routerLink]="['users']"
-            >Home</a
+            ><strong>Home</strong></a
           >
         </li>
         <li class="nav-item">
@@ -29,7 +29,7 @@
             routerLinkActive="active"
             aria-current="page"
             [routerLink]="['new-user']"
-            >New User</a
+            ><strong>New User</strong></a
           >
         </li>
       </ul>
