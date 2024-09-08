@@ -22,4 +22,15 @@ export class ViewComponent {
       console.log(this.user);
     });
   }
+
+  async delete(id: string | undefined) {
+    let erase = confirm(`Do you want to permanently delete ${this.user?.first_name} ${this.user?.last_name} from our database?`);
+    if (erase) {
+try {
+  const response = await this.usersService.deleteById(id)
+  alert(`${this.user?.first_name} ${this.user?.last_name} was successfully deleted from the database`)
+ 
+} catch(error){console.log(error)}
+    }
+  }
 }

@@ -12,7 +12,7 @@
   </h4>
 
   <div class="btn-group w-auto mt-3" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-primary m-1">Delete</button>
+    <button type="button" (click)="delete(user?._id)" class="btn btn-primary m-1" [routerLink]="['/home']">Delete</button>
     <button
       type="button"
       class="btn btn-primary m-1"

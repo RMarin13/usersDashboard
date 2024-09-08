@@ -27,7 +27,7 @@
       <!-- <p>Update</p> -->
     </div>
     <div>
-      <button class="btn" [routerLink]="['']">
+      <button class="btn" (click)="delete(myUser?._id)" [routerLink]="['']">
         <i class="fa-regular fa-trash-can"></i>
       </button>
       <!-- <p>Delete</p> -->
