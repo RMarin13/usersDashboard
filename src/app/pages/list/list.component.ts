@@ -26,4 +26,14 @@ export class ListComponent {
       console.log(error);
     }
   }
+
+  async goToPage(page: number) {
+    try {
+      const response = await this.usersService.getAll(page);
+      this.respObj = response;
+      this.arrUsers = this.respObj.results;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

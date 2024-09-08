@@ -39,7 +39,9 @@ export class FormComponent {
         ]),
         email: new FormControl(null, [
           Validators.required,
-          Validators.pattern(/.*?@?[^@]*\.+.*/),
+          Validators.pattern(
+            /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/
+          ),
         ]),
         image: new FormControl(null, [
           Validators.required,
@@ -72,7 +74,9 @@ export class FormComponent {
             ]),
             email: new FormControl(user.email, [
               Validators.required,
-              Validators.pattern(/.*?@?[^@]*\.+.*/),
+              Validators.pattern(
+                /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/
+              ),
             ]),
             image: new FormControl(user.image, [
               Validators.required,
